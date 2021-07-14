@@ -1,0 +1,34 @@
+Readme - Tema3PC - 323CC Radulescu Florin
+
+Fisierele compun o aplicatie ce joaca rol de interfata pentru trimiterea unor
+mesaje catre un server web.
+
+La rularea acesteia, se asteapta un input de la utilizator. Daca acesta repre-
+zinta o comanda valida, se mai pot introduce parametrii sau se executa direct
+o actiune, dupa caz. Comenzile invalide nu sunt interpretate si nu duc la blo-
+carea aplicatiei, ci se asteapta un input nou valid. Interfata se inchide la
+comanda exit.
+
+Important este faptul ca singurele comenzi implementate sunt register, login,
+entry_library, logout si exit. Intrucat entry_library nu functioneaza, nu am
+continuat implementarea altor comenzi ce ar fi necesitat acces la biblioteca.
+
+Se afiseaza mesaje intermediare pentru controlul actiunilor si a informatiei
+primite de la server.
+
+Pentru aceasta tema am ales sa folosesc ca biblioteca de parsare nlohmann, de
+la https://github.com/nlohmann/json. Am preferat-o fata de parson strict din
+motivul folosirii C++.
+Obiectele de tip json sunt folosite in modul urmator: Acestea sunt instantiate
+doar la primirea unei comenzi de tip post (ce necesita un body ce va fi trimis
+catre functia de formatare a mesajului de trimis catre server).
+
+Sunt de mentionat urmatoarele: pentru fiecare comanda se deschide o conexiune
+noua catre server, iar cookie-urile sunt preluate/actualizate atunci doar in 
+cadrul comenzilor care ar intoarce in mod normal cookie, evitand redundante.
+
+Am preferat sa definesc in helpers stringurile de tip url, portul, ip-ul sau
+alte mesaje pentru a face mai lejer codul principal si pentru a putea fi mo-
+dificate, la nevoie, din acelasi loc. Aceast lucru a fost facut intrucat in
+afara de antelele unor functii preluate din laboratoare am incercat sa pastrez
+un coding style cu sub 80 caractere/rand.
